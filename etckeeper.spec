@@ -1,5 +1,5 @@
 Name: etckeeper
-Version: 1.10
+Version: 1.11
 Release: 4%{?dist}
 Summary: store /etc in git, mercurial, bzr or darcs
 
@@ -48,7 +48,7 @@ mkdir -p %{_var}/cache/etckeeper
 
 %files
 %defattr(-,root,root,-)
-%doc GPL INSTALL TODO README
+%doc GPL INSTALL TODO README.md
 %{_bindir}/*
 %{_mandir}/*
 # this isn't very clever and its a manual process update.
