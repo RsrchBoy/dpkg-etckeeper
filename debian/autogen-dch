@@ -9,7 +9,8 @@ my %numeric = (
     precise => '12.04',
     quantal => '12.10',
     raring  => '13.04',
-    saucy   => '13.10', # active development!
+    saucy   => '13.10',
+    trusty  => '14.04',
 );
 
 my $current_branch = `git rev-parse --abbrev-ref HEAD`;
