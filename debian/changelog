@@ -1,3 +1,9 @@
+etckeeper (1.12+nmu1~12.04~ppa1) precise; urgency=medium
+
+  * Build for precise.
+
+ -- Chris Weyl <cweyl@alumni.drew.edu>  Wed, 11 Jun 2014 16:08:27 -0700
+
 etckeeper (1.12+nmu1) UNRELEASED; urgency=medium
 
   * Non-maintainer upload.
