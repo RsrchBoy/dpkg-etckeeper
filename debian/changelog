@@ -1,3 +1,12 @@
+etckeeper (1.13+nmu1) UNRELEASED; urgency=medium
+
+  * Non-maintainer upload.
+  * ...the better to build in our ppa.
+  * On post-install, check if git knows who we are; if not, identify ourself
+    by setting core.name and core.email to (hopefully) sensible values.
+
+ -- Chris Weyl <cweyl@alumni.drew.edu>  Sat, 19 Jul 2014 13:50:20 -0700
+
 etckeeper (1.13) UNRELEASED; urgency=medium
 
   * Ignore check-mk-agent-logwatch's FHS violating
