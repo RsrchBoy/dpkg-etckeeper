@@ -1,3 +1,22 @@
+etckeeper (1.13+nmu1) UNRELEASED; urgency=medium
+
+  * Non-maintainer upload.
+  * ...the better to build in our ppa.
+  * On post-install, check if git knows who we are; if not, identify ourself
+    by setting core.name and core.email to (hopefully) sensible values.
+
+ -- Chris Weyl <cweyl@alumni.drew.edu>  Sat, 19 Jul 2014 13:50:20 -0700
+
+etckeeper (1.13) UNRELEASED; urgency=medium
+
+  * Ignore check-mk-agent-logwatch's FHS violating
+    /etc/check_mk/logwatch.state. Closes: #753903
+  * Only allow [-a-z_] in etckeeper commands to avoid any possible directory
+    traversal etc issues.
+  * update-ignore, uninit: Fix parsing of ignore files containing '\'
+
+ -- Joey Hess <joeyh@debian.org>  Sat, 05 Jul 2014 19:03:00 -0400
+
 etckeeper (1.12+nmu1~12.04~ppa1) precise; urgency=medium
 
   * Build for precise.
@@ -11,7 +30,7 @@ etckeeper (1.12+nmu1) UNRELEASED; urgency=medium
 
  -- Chris Weyl <cweyl@alumni.drew.edu>  Wed, 11 Jun 2014 16:02:37 -0700
 
-etckeeper (1.12) UNRELEASED; urgency=medium
+etckeeper (1.12) unstable; urgency=medium
 
   * Portability fixes. Thanks, Harald Dunkel.
   * Add support for pushing to multiple remote repositories.
@@ -19,7 +38,7 @@ etckeeper (1.12) UNRELEASED; urgency=medium
   * Fix handling of git ignores like dir/*
     Thanks, Pim van den Berg
 
- -- Joey Hess <joeyh@debian.org>  Fri, 09 May 2014 09:23:37 -0300
+ -- Joey Hess <joeyh@debian.org>  Fri, 13 Jun 2014 12:03:06 -0400
 
 etckeeper (1.11) unstable; urgency=low
 
