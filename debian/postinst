@@ -81,6 +81,11 @@ configure)
 		# Fresh install.
 		. /etc/etckeeper/etckeeper.conf || true
 		if [ -n "$VCS" ] && [ -x "`which $VCS 2>/dev/null`" ]; then
+
+            # make sure git knows who we are
+            (git config core.name  >/dev/null) || (cd /etc && git config core.name 'etckeeper'        )
+            (git config core.email >/dev/null) || (cd /etc && git config core.email "root@$(hostname)")
+
 			if etckeeper init; then
 				if ! etckeeper commit "Initial commit"; then
 					echo "etckeeper commit failed; run it by hand" >&2
