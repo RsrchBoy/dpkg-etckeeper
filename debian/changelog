@@ -1,3 +1,10 @@
+etckeeper (1.17+nmu1) UNRELEASED; urgency=medium
+
+  * Non-maintainer upload.
+  * UNRELEASED
+
+ -- Chris Weyl <cweyl@alumni.drew.edu>  Tue, 23 Dec 2014 12:10:19 -0800
+
 etckeeper (1.17) unstable; urgency=medium
 
   * Fix name of DNF plugin.
