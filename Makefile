@@ -15,10 +15,11 @@ INSTALL_EXE=${INSTALL}
 INSTALL_DATA=${INSTALL} -m 0644
 PYTHON=python
 
-build: etckeeper.spec
+build: etckeeper.spec etckeeper.version
 	-$(PYTHON) ./etckeeper-bzr/__init__.py build || echo "** bzr support not built"
+	-$(PYTHON) ./etckeeper-dnf/etckeeper.py build || echo "** DNF support not built"
 
-install:
+install: etckeeper.version
 	mkdir -p $(DESTDIR)$(etcdir)/etckeeper/ $(DESTDIR)$(vardir)/cache/etckeeper/
 	$(CP) *.d $(DESTDIR)$(etcdir)/etckeeper/
 	$(INSTALL_DATA) $(CONFFILE) $(DESTDIR)$(etcdir)/etckeeper/etckeeper.conf
@@ -44,6 +45,9 @@ ifeq ($(HIGHLEVEL_PACKAGE_MANAGER),yum)
 	mkdir -p $(DESTDIR)$(etcdir)/yum/pluginconf.d
 	$(INSTALL_DATA) yum-etckeeper.conf $(DESTDIR)$(etcdir)/yum/pluginconf.d/etckeeper.conf
 endif
+ifeq ($(HIGHLEVEL_PACKAGE_MANAGER),dnf)
+	-$(PYTHON) ./etckeeper-dnf/etckeeper.py install --root=$(DESTDIR) ${PYTHON_INSTALL_OPTS} || echo "** DNF support not installed"
+endif
 ifeq ($(HIGHLEVEL_PACKAGE_MANAGER),zypper)
 	mkdir -p $(DESTDIR)$(prefix)/lib/zypp/plugins/commit
 	$(INSTALL) zypper-etckeeper.py $(DESTDIR)$(prefix)/lib/zypp/plugins/commit/zypper-etckeeper.py
@@ -51,11 +55,15 @@ endif
 	-$(PYTHON) ./etckeeper-bzr/__init__.py install --root=$(DESTDIR) ${PYTHON_INSTALL_OPTS} || echo "** bzr support not installed"
 	echo "** installation successful"
 
-clean: etckeeper.spec
+clean: etckeeper.spec etckeeper.version
 	rm -rf build
 
 etckeeper.spec:
 	sed -i~ "s/Version:.*/Version: $$(perl -e '$$_=<>;print m/\((.*?)\)/'<debian/changelog)/" etckeeper.spec
 	rm -f etckeeper.spec~
 
-.PHONY: etckeeper.spec
+etckeeper.version:
+	sed -i~ "s/Version:.*/Version: $$(perl -e '$$_=<>;print m/\((.*?)\)/'<debian/changelog)\"/" etckeeper
+	rm -f etckeeper~
+
+.PHONY: etckeeper.spec etckeeper.version

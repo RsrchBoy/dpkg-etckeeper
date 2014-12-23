@@ -1,18 +1,18 @@
 Source: etckeeper
 Section: admin
 Priority: optional
-Build-Depends: debhelper (>= 7), dpkg-dev (>= 1.9.0), bzr (>= 1.5~), python
-Maintainer: Joey Hess <joeyh@debian.org>
+Build-Depends: debhelper (>= 7), dpkg-dev (>= 1.9.0), bzr (>= 1.5~), python, dh-python
+Maintainer: Debian QA Group <packages@qa.debian.org>
 Standards-Version: 3.9.4
 XS-Python-Version: all
 Vcs-Git: git://git.kitenet.net/etckeeper
-Homepage: http://kitenet.net/~joey/code/etckeeper/
+Homepage: http://etckeeper.branchable.com/
 
 Package: etckeeper
 Architecture: all
 Section: admin
 Depends: git (>= 1:1.7) | mercurial | bzr (>= 1.5~) | darcs, ${misc:Depends}
-Recommends: cron
+Recommends: cron-daemon
 Suggests: sudo (>= 1.7.4p4)
 Conflicts: bzr (<< 1.5~)
 Description: store /etc in git, mercurial, bzr or darcs
