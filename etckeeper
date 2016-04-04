@@ -66,7 +66,7 @@ elif [ "x$1" = "x-h" ] || [ "x$1" = "x--help" ]; then
 	exit 0
 elif [ "x$1" = "x-v" ] || [ "x$1" = "x--version" ]; then
 	# This is automatically updated by the Makefile.
-        echo "Version: 1.17"
+        echo "Version: 1.18.2"
         exit 0
 fi
 command="$1"
@@ -79,7 +79,7 @@ elif [ "$command" = "pre-apt" ]; then
 	command=pre-install
 fi
 
-if echo "$command" | egrep -q '[^-a-z_]'; then
+if echo "$command" | LANG=C egrep -q '[^-a-z_]'; then
 	echo "etckeeper: invalid command $command" >&2
 	exit 1
 fi
@@ -121,7 +121,7 @@ fi
 export VCS
 
 lsscripts() {
-	perl -e '
+	LANG=C perl -e '
 		$dir=shift;
 		print join "\n", grep { ! -d $_ && -x $_ }
 			grep /^\Q$dir\/\E[-a-zA-Z0-9]+$/,
